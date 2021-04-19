@@ -1,0 +1,28 @@
+spring:
+  security:
+    user:
+      name: root
+      password: root
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: D:/myself/workspace/local/cloud/config-repo
+  rabbitmq:
+    host: 127.0.0.1
+    username: jsnx
+    password: 123456
+    virtualHost: /
+server:
+  port: 8888
+eureka:
+  instance:
+    ip-address: 127.0.0.1
+    hostname: registry.spring.cloud
+    prefer-ip-address: true
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.ip-address}:8761/eureka/

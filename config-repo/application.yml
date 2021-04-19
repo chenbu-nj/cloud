@@ -1,0 +1,51 @@
+spring:
+  security:
+    user:
+      name: root
+      password: root
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: jsnx
+    password: 123456
+    virtual-host: /
+  sleuth:
+    sampler:
+      percentage: 1
+    integration:
+      enabled: false
+    scheduled:
+      skip-pattern: "^org.*HystrixStreamTask$"
+  cloud:
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+eureka:
+  instance:
+    ip-address: 127.0.0.1
+    hostname: registry.spring.cloud
+    prefer-ip-address: true
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.ip-address}:8761/eureka/
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+    command:
+        default:
+            execution:
+              timeout:
+                enabled: true
+              isolation:
+                    thread:
+                        timeoutInMilliseconds: 70000
+ribbon:
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+  ReadTimeout: 70000
+  ConnectTimeout: 70000

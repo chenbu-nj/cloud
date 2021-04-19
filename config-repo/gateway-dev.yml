@@ -1,0 +1,13 @@
+server:
+  port: 8060
+eureka:
+  instance:
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
