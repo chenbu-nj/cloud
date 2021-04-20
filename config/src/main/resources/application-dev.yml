@@ -7,12 +7,20 @@ spring:
     config:
       server:
         native:
-          searchLocations: D:/myself/workspace/local/cloud/config-repo
+          searchLocations: D:/myself/workspace/github/cloud/config-repo
+    bus:
+      refresh:
+        enabled: true
   rabbitmq:
     host: 127.0.0.1
     username: jsnx
     password: 123456
     virtualHost: /
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 server:
   port: 8888
 eureka:

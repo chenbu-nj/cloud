@@ -9,18 +9,6 @@ spring:
     username: jsnx
     password: 123456
     virtual-host: /
-  sleuth:
-    sampler:
-      percentage: 1
-    integration:
-      enabled: false
-    scheduled:
-      skip-pattern: "^org.*HystrixStreamTask$"
-  cloud:
-    bus:
-      enabled: true
-      trace:
-        enabled: true
 eureka:
   instance:
     ip-address: 127.0.0.1

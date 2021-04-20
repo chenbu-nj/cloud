@@ -17,12 +17,12 @@ public class RedirectController {
     @GetMapping(value = "straightGetTransId")
     @ResponseBody
     public String straightGetTransId(){
-        return UUID.randomUUID().toString();
+        return "服务A接口：" + UUID.randomUUID().toString();
     }
 
     @GetMapping(value = "redirectGetTransId")
     @ResponseBody
     public String redirectGetTransId(){
-        return getTransIdService.getTransId();
+        return "服务A调用：" + getTransIdService.getTransId();
     }
 }
