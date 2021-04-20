@@ -1,19 +1,18 @@
 spring:
-  application:
-    name: registry
-  security:
-    user:
-      name: root
-      password: root
-server:
-  port: 8761
-eureka:
-  instance:
-    ip-address: 127.0.0.1
-    hostname: registry.spring.cloud
-    prefer-ip-address: true
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.ip-address}:${server.port}/eureka/
+  profiles:
+    active: devsimple
+
+---
+spring:
+  profiles:
+    active: devcluster1
+
+---
+spring:
+  profiles:
+    active: devcluster2
+
+---
+spring:
+  profiles:
+    active: devcluster3

@@ -1,14 +1,30 @@
 spring:
+  application:
+    name: config
   security:
     user:
       name: root
       password: root
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: D:/myself/workspace/github/cloud/config-repo
+    bus:
+      refresh:
+        enabled: true
   rabbitmq:
     host: 127.0.0.1
-    port: 5672
     username: jsnx
     password: 123456
-    virtual-host: /
+    virtualHost: /
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 8888
 eureka:
   instance:
     ip-address: 127.0.0.1
@@ -18,22 +34,4 @@ eureka:
       user.password: ${spring.security.user.password}
   client:
     service-url:
-#      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.ip-address}:8761/eureka/
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.ip-address}:8761/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.ip-address}:8762/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.ip-address}:8763/eureka/
-feign:
-  hystrix:
-    enabled: true
-hystrix:
-    command:
-        default:
-            execution:
-              timeout:
-                enabled: true
-              isolation:
-                    thread:
-                        timeoutInMilliseconds: 70000
-ribbon:
-  MaxAutoRetries: 0
-  MaxAutoRetriesNextServer: 0
-  ReadTimeout: 70000
-  ConnectTimeout: 70000

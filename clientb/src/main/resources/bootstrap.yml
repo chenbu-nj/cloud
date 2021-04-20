@@ -5,3 +5,16 @@ spring:
     config:
       uri: http://127.0.0.1:8888
       profile: dev
+  profiles:
+    active: dev
+
+---
+spring:
+  application:
+    name: clientb
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+      profile: dev
+  profiles:
+    active: devcluster

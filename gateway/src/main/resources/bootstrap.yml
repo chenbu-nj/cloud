@@ -5,3 +5,14 @@ spring:
     config:
       uri: http://127.0.0.1:8888
       profile: dev
+server:
+  port: 8060
+
+---
+spring:
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+      profile: dev
+  profiles:
+    active: devcluster
