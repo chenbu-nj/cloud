@@ -1,5 +1,6 @@
 package com.example.clienta.service;
 
+import com.example.clienta.Vo.ApiResult;
 import com.example.clienta.feign.FeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ public class GetTransIdServiceImpl implements GetTransIdService {
     private FeignService feignService;
 
     @Override
-    public String getTransId() {
-        return feignService.getTransId();
+    public ApiResult getTransId(String name) {
+        return feignService.getTransId(name);
     }
 }

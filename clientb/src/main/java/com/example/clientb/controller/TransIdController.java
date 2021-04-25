@@ -4,7 +4,6 @@ import com.example.clientb.Vo.ApiResult;
 import com.example.clientb.Vo.ViewVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -18,7 +17,7 @@ import java.util.UUID;
 
 @RefreshScope
 @RestController
-@Api(description = "流水号生成器")//controller在swagger中的中文名称
+@Api(tags = "流水号生成器")//controller在swagger中的中文名称
 public class TransIdController {
 
     @Value("${test.flag}")

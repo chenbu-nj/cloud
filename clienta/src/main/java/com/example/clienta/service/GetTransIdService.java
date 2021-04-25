@@ -1,7 +1,9 @@
 package com.example.clienta.service;
 
 
+import com.example.clienta.Vo.ApiResult;
+
 public interface GetTransIdService {
 
-    String getTransId();
+    ApiResult getTransId(String name);
 }
