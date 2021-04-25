@@ -14,6 +14,10 @@ eureka:
     ip-address: 127.0.0.1
     prefer-ip-address: true
     hostname: registry3
+    #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认为90秒
+    lease-expiration-duration-in-seconds: 10
+    #Eureka客户需要多长时间发送心跳给Eureka服务器，表明它仍然活着,默认为30 秒
+    lease-renewal-interval-in-seconds: 10
   client:
     registerWithEureka: true
     fetchRegistry: true
@@ -21,6 +25,6 @@ eureka:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@registry1:8761/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@registry2:8762/eureka/
   server:
     #驱逐计时器扫描失效服务的间隔时间（默认为60*1000ms）
-    eviction-interval-timer-in-ms: 60000
+    eviction-interval-timer-in-ms: 10000
     #自我保护机制（生产建议开启，本地测试如果是单机建议关闭）
     enable-self-preservation: false

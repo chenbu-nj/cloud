@@ -7,8 +7,6 @@ spring:
       profile: dev
   profiles:
     active: dev
-server:
-  port: 9101
 
 ---
 spring:

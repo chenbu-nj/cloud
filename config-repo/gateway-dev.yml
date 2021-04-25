@@ -1,6 +1,27 @@
 spring:
   cloud:
     gateway:
+      enabled: true
       discovery:
         locator:
-          enabled: true
+          lower-case-service-id: true
+      routes:
+        #netty 路由过滤器(数组)，http或https开头 lb://代表是服务的名称  predicates:表示会过滤掉的请求头
+#        - id: clienta-router
+#          uri: lb://clienta
+#          predicates:
+#            - Path=/clienta/**
+#          filters:
+#          - StripPrefix=1
+        - id: clientb-router
+          uri: lb://clientb
+          predicates:
+            - Path=/clientb/**
+          filters:
+          - StripPrefix=1
+    #处理跨域请求问题
+    globalcors:
+      cors-configurations:
+        '[/**]':
+          allowedOrigins: "*"
+          allowedMethods: "*"
