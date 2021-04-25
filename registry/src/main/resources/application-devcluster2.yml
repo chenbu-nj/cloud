@@ -1,6 +1,6 @@
 spring:
   application:
-    name: registry2
+    name: registry
   security:
     user:
       name: root
@@ -13,8 +13,14 @@ eureka:
   instance:
     ip-address: 127.0.0.1
     prefer-ip-address: true
+    hostname: registry2
   client:
     registerWithEureka: true
     fetchRegistry: true
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.ip-address}:8761/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.ip-address}:8763/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@registry1:8761/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@registry3:8763/eureka/
+    server:
+      #驱逐计时器扫描失效服务的间隔时间（默认为60*1000ms）
+      eviction-interval-timer-in-ms: 60000
+      #自我保护机制（生产建议开启，本地测试如果是单机建议关闭）
+      enable-self-preservation: false
