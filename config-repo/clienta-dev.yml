@@ -1,7 +1,2 @@
-eureka:
-  instance:
-    metadata-map:
-      user.name: ${spring.security.user.name}
-      user.password: ${spring.security.user.password}
 test:
   flag: 1
