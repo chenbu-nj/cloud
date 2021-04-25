@@ -7,4 +7,5 @@ springcloud基础框架
 #gateway 网关
 #clienta 服务A
 #clientb 服务B
+#swagger 快速生成接口文档
 服务A调用服务B用openfeign
