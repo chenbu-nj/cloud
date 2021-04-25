@@ -50,6 +50,7 @@
             <artifactId>lombok</artifactId>
             <version>1.18.12</version>
         </dependency>
+        <!-- Swagger核心包 end -->
     </dependencies>
     <build>
         <plugins>
