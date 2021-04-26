@@ -9,9 +9,11 @@ spring:
     config:
       server:
         native:
+          #本地配置中心外部配置地址
           searchLocations: D:/myself/workspace/github/cloud/config-repo
     bus:
       refresh:
+        #bus刷新重新读取配置文件，刷新地址：http://localhost:8888/actuator/bus-refresh
         enabled: true
   rabbitmq:
     host: 127.0.0.1
