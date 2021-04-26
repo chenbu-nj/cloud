@@ -10,3 +10,4 @@
 # swagger 快速生成接口文档
 # hystrix 熔断器
 # openFeign和ribbon（负载均衡以及失败重发机制）
+# sleuth + zipkin (链路监控。1、配置zipkin环境变量。2、启动zipkin.jar。3、启动对应springcloud组件程序。4、调用服务之后可以在http://localhost:9411中查看到调用时常和调用链路以及调用情况)
