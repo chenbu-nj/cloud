@@ -1,6 +1,7 @@
 spring:
   cloud:
     gateway:
+      #路由开关
       enabled: true
       discovery:
         locator:
@@ -18,7 +19,7 @@ spring:
           predicates:
             - Path=/clientb/**
           filters:
-          - StripPrefix=2
+          - StripPrefix=1
     #处理跨域请求问题
     globalcors:
       cors-configurations:

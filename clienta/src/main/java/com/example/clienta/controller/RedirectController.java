@@ -56,4 +56,11 @@ public class RedirectController {
         }
         return "服务A调用：" + serialno + ",传递的信息是：" + msg;
     }
+
+    @ApiOperation(value = "CLIENTSERVICE测试方法", httpMethod = "GET")//方法中文名称
+    @GetMapping(value = "getClientAService")
+    @ResponseBody
+    public String getClientAService(){
+        return "端口为" + port + "，返回的结果";
+    }
 }

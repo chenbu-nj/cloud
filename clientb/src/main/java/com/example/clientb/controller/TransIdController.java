@@ -2,9 +2,11 @@ package com.example.clientb.controller;
 
 import com.example.clientb.Vo.ApiResult;
 import com.example.clientb.Vo.ViewVo;
+import com.example.clientb.feign.FeignService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,9 @@ public class TransIdController {
     @Value("${test.flag}")
     String flag;
 
+    @Autowired
+    FeignService feignService;
+
     @ApiOperation(value = "获取流水号", httpMethod = "GET")//方法中文名称
     @ApiImplicitParam(name = "name", value = "姓名", dataType = "string")//参数（值-中文名称-数据类型）
     @GetMapping(value = "getTransId")
@@ -40,5 +45,12 @@ public class TransIdController {
         vo.setName(name);
         vo.setTransId(UUID.randomUUID().toString());
         return vo;
+    }
+
+    @ApiOperation(value = "获取CLIENTA服务", httpMethod = "GET")//方法中文名称
+    @GetMapping(value = "getClientAService")
+    @ResponseBody
+    public String getClientAService(){
+        return feignService.getClientAService();
     }
 }

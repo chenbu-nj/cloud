@@ -1,4 +1,9 @@
 spring:
+  cloud:
+    loadbalancer:
+      retry:
+        #开启spring cloud重试机制
+        enable: true
   security:
     user:
       name: root
@@ -14,9 +19,9 @@ eureka:
     ip-address: 127.0.0.1
     prefer-ip-address: true
     #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认为90秒
-    lease-expiration-duration-in-seconds: 10
+    lease-expiration-duration-in-seconds: 90
     #Eureka客户需要多长时间发送心跳给Eureka服务器，表明它仍然活着,默认为30 秒
-    lease-renewal-interval-in-seconds: 10
+    lease-renewal-interval-in-seconds: 30
     metadata-map:
       user.name: ${spring.security.user.name}
       user.password: ${spring.security.user.password}
@@ -24,3 +29,13 @@ eureka:
     service-url:
 #      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.ip-address}:8761/eureka/
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@registry1:8761/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@registry2:8762/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@registry3:8763/eureka/
+#所有服务都设置ribbon重试机制参数设置（如果想单独设置某个服务在ribbon前加入服务名即可）
+ribbon:
+  #对当前实例的重试次数，默认是0次
+  MaxAutoRetries: 0
+  #切换实例重试次数，默认是1次
+  MaxAutoRetriesNextServer: 1
+  #ribbon的数据读取超时时间
+  ReadTimeout: 5000
+  #ribbon的连接超时时间
+  ConnectTimeout: 1000
