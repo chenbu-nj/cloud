@@ -9,7 +9,7 @@
 		<module>gateway</module>
 		<module>clienta</module>
 		<module>clientb</module>
-	</modules>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
