@@ -9,3 +9,4 @@
 # clientb 服务B（测试服务B）
 # swagger 快速生成接口文档
 # hystrix 熔断器
+# openFeign和ribbon（负载均衡以及失败重发机制）
