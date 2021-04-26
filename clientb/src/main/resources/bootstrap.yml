@@ -7,7 +7,11 @@ spring:
       profile: dev
   profiles:
     active: dev
-
+#此配置必须写在bootstramp.yml才能生效
+feign:
+  hystrix:
+    # 开启断路器
+    enabled: true
 ---
 spring:
   application:
@@ -18,3 +22,8 @@ spring:
       profile: dev
   profiles:
     active: devcluster
+#此配置必须写在bootstramp.yml才能生效
+feign:
+  hystrix:
+    # 开启断路器
+    enabled: true
